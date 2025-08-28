@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class Robonaut {
@@ -24,17 +25,43 @@ public class Robonaut {
         System.out.println("------------------------------------------------------------");
     }
 
+    // Level 2
+    public static void add(ArrayList<String> list, String content) {
+        list.add(content);
+        System.out.println("------------------------------------------------------------");
+        System.out.println("added: " + content);
+        System.out.println("------------------------------------------------------------");
+    }
+
+    public static void list(ArrayList<String> list) {
+        int i = 1;
+        System.out.println("------------------------------------------------------------");
+        for (String e : list) {
+            System.out.println(i + ". " + e);
+            i++;
+        }
+        System.out.println("------------------------------------------------------------");
+    }
+
     public static void main(String[] args) {
         // Greetings
         hello();
+
         Scanner sc = new Scanner (System.in);
+
+        // Level-2
         String option = sc.nextLine();
+        ArrayList<String> list = new ArrayList<>();
         while (!option.equals("bye")) {
-            echo(option);
+            switch (option) {
+            case "list":
+                list(list);
+                break;
+            default:
+                add(list, option);
+                break;
+            }
             option = sc.nextLine();
         }
-
-        // Bye
-        bye();
     }
 }
