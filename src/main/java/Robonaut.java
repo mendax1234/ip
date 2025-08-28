@@ -1,4 +1,7 @@
+import java.util.*;
+
 public class Robonaut {
+    // Level 0
     public static void hello() {
         String logo = " ____       _                             _   \n"
                 + "|  _ \\ ___ | |__   ___  _ __   __ _ _   _| |_ \n"
@@ -14,9 +17,22 @@ public class Robonaut {
         System.out.println("Bye! Hope to see you again soon!");
     }
 
+    // Level 1
+    public static void echo(String s) {
+        System.out.println("____________________________________________________________");
+        System.out.println(s);
+        System.out.println("____________________________________________________________");
+    }
+
     public static void main(String[] args) {
         // Greetings
         hello();
+        Scanner sc = new Scanner (System.in);
+        String option = sc.nextLine();
+        while (!option.equals("bye")) {
+            echo(option);
+            option = sc.nextLine();
+        }
 
         // Bye
         bye();
