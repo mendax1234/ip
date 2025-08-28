@@ -19,9 +19,9 @@ public class Robonaut {
 
     // Level 1
     public static void echo(String s) {
-        System.out.println("____________________________________________________________");
+        System.out.println("------------------------------------------------------------");
         System.out.println(s);
-        System.out.println("____________________________________________________________");
+        System.out.println("------------------------------------------------------------");
     }
 
     public static void main(String[] args) {
