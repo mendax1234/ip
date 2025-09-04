@@ -100,10 +100,10 @@ public class Robonaut {
                 list(tasks);
             } else if (option.startsWith("mark")) {
                 int index = extractNumber(option);
-                mark(tasks, index);
+                mark(tasks, index - 1);
             } else if (option.startsWith("unmark")) {
                 int index = extractNumber(option);
-                unmark(tasks, index);
+                unmark(tasks, index - 1);
             } else {
                 add(tasks, option);
             }
