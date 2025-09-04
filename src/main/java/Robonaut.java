@@ -1,6 +1,11 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import tasks.Deadline;
+import tasks.Event;
+import tasks.Task;
+import tasks.ToDo;
+
 public class Robonaut {
     /** The horizontal line used to create box output when printing */
     private static final String HORIZONTAL_LINE = "------------------------------------------------------------";
@@ -22,8 +27,20 @@ public class Robonaut {
             } else if (option.startsWith("unmark")) {
                 int index = extractInteger(option);
                 executeUnmarkCommand(tasks, index - 1);
+            } else if (option.startsWith("todo")) {
+                String desc = option.substring(5); // skip "todo"
+                printAddCommand(tasks, new ToDo(desc));
+            } else if (option.startsWith("deadline")) {
+                String[] parts = option.substring(9).split("/by", 2);
+                printAddCommand(tasks, new Deadline(parts[0].trim(), parts[1].trim()));
+            } else if (option.startsWith("event")) {
+                String[] parts = option.substring(6).split("/from|/to");
+                String desc = parts[0].trim();
+                String from = parts[1].trim();
+                String to = parts[2].trim();
+                printAddCommand(tasks, new Event(desc, from, to));
             } else {
-                printAddCommand(tasks, option);
+                System.out.println("Unknown command!");
             }
             option = sc.nextLine();
         }
@@ -33,7 +50,7 @@ public class Robonaut {
     }
 
     /**
-     * Greets the user
+     * Prints the greeting message with logo.
      */
     public static void printHelloMessage() {
         String logo = """
@@ -49,28 +66,31 @@ public class Robonaut {
     }
 
     /**
-     * Ends the conversation
+     * Prints the goodbye message.
      */
     public static void printByeMessage() {
         System.out.println("Bye! Hope to see you again soon!");
     }
 
     /**
-     * Adds a task to the task list
-     * @param tasks Task list
-     * @param content Description of the task to be added
+     * Adds a task to the task list and prints confirmation.
+     *
+     * @param tasks the task list
+     * @param task the task to add
      */
-    public static void printAddCommand(ArrayList<Task> tasks, String content) {
-        Task newTask = new Task(content);
-        tasks.add(newTask);
+    public static void printAddCommand(ArrayList<Task> tasks, Task task) {
+        tasks.add(task);
         System.out.println(HORIZONTAL_LINE);
-        System.out.println("added: " + content);
+        System.out.println("Got it. I've added this task:");
+        System.out.println("  " + task);
+        System.out.println("Now you have " + tasks.size() + " tasks in the list.");
         System.out.println(HORIZONTAL_LINE);
     }
 
     /**
-     * Lists all the current tasks in the task list
-     * @param tasks Task list
+     * Prints all tasks in the list.
+     *
+     * @param tasks the task list
      */
     public static void printListCommand(ArrayList<Task> tasks) {
         System.out.println(HORIZONTAL_LINE);
@@ -82,9 +102,10 @@ public class Robonaut {
     }
 
     /**
-     * Marks a specific task in the task list as Done
-     * @param tasks Task list
-     * @param index Index of the task to be marked as Done
+     * Marks the task at the given index as done.
+     *
+     * @param tasks the task list
+     * @param index the index of the task (0-based)
      */
     public static void executeMarkCommand(ArrayList<Task> tasks, int index) {
         Task t = tasks.get(index);
@@ -96,9 +117,10 @@ public class Robonaut {
     }
 
     /**
-     * Unmarks a specific task in the task list as NotDone
-     * @param tasks Task list
-     * @param index Index of the task to be marked as NotDone
+     * Marks the task at the given index as not done.
+     *
+     * @param tasks the task list
+     * @param index the index of the task (0-based)
      */
     public static void executeUnmarkCommand(ArrayList<Task> tasks, int index) {
         Task t = tasks.get(index);
@@ -110,9 +132,10 @@ public class Robonaut {
     }
 
     /**
-     * Extract the integer appears after the string from a string
-     * @param s String containing strings and ints
-     * @return Integer extract from s
+     * Extracts the task number (1-based) from a command string.
+     *
+     * @param s the input string
+     * @return the 0-based task index
      */
     private static int extractInteger(String s) {
         // Split by space and take last token
