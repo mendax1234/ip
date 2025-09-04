@@ -6,7 +6,7 @@ public class Robonaut {
     private static final String HORIZONTAL_LINE = "------------------------------------------------------------";
 
     public static void main(String[] args) {
-        hello();
+        printHelloMessage();
 
         Scanner sc = new Scanner(System.in);
         ArrayList<Task> tasks = new ArrayList<>();
@@ -15,19 +15,19 @@ public class Robonaut {
 
         while (!option.equals("bye")) {
             if (option.equals("list")) {
-                list(tasks);
+                printListCommand(tasks);
             } else if (option.startsWith("mark")) {
                 int index = extractInteger(option);
-                mark(tasks, index - 1);
+                executeMarkCommand(tasks, index - 1);
             } else if (option.startsWith("unmark")) {
                 int index = extractInteger(option);
-                unmark(tasks, index - 1);
+                executeUnmarkCommand(tasks, index - 1);
             } else {
-                add(tasks, option);
+                printAddCommand(tasks, option);
             }
             option = sc.nextLine();
         }
-        bye();
+        printByeMessage();
 
         sc.close();
     }
@@ -35,7 +35,7 @@ public class Robonaut {
     /**
      * Greets the user
      */
-    public static void hello() {
+    public static void printHelloMessage() {
         String logo = """
                  ____       _                             _  \s
                 |  _ \\ ___ | |__   ___  _ __   __ _ _   _| |_\s
@@ -51,7 +51,7 @@ public class Robonaut {
     /**
      * Ends the conversation
      */
-    public static void bye() {
+    public static void printByeMessage() {
         System.out.println("Bye! Hope to see you again soon!");
     }
 
@@ -60,7 +60,7 @@ public class Robonaut {
      * @param tasks Task list
      * @param content Description of the task to be added
      */
-    public static void add(ArrayList<Task> tasks, String content) {
+    public static void printAddCommand(ArrayList<Task> tasks, String content) {
         Task newTask = new Task(content);
         tasks.add(newTask);
         System.out.println(HORIZONTAL_LINE);
@@ -72,7 +72,7 @@ public class Robonaut {
      * Lists all the current tasks in the task list
      * @param tasks Task list
      */
-    public static void list(ArrayList<Task> tasks) {
+    public static void printListCommand(ArrayList<Task> tasks) {
         System.out.println(HORIZONTAL_LINE);
         System.out.println("Here are the tasks in your list:");
         for (int i = 0; i < tasks.size(); i++) {
@@ -86,7 +86,7 @@ public class Robonaut {
      * @param tasks Task list
      * @param index Index of the task to be marked as Done
      */
-    public static void mark(ArrayList<Task> tasks, int index) {
+    public static void executeMarkCommand(ArrayList<Task> tasks, int index) {
         Task t = tasks.get(index);
         t.markAsDone();
         System.out.println(HORIZONTAL_LINE);
@@ -100,7 +100,7 @@ public class Robonaut {
      * @param tasks Task list
      * @param index Index of the task to be marked as NotDone
      */
-    public static void unmark(ArrayList<Task> tasks, int index) {
+    public static void executeUnmarkCommand(ArrayList<Task> tasks, int index) {
         Task t = tasks.get(index);
         t.markAsNotDone();
         System.out.println(HORIZONTAL_LINE);
