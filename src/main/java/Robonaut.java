@@ -10,9 +10,13 @@ public class Robonaut {
     /** The horizontal line used to create box output when printing */
     private static final String HORIZONTAL_LINE = "------------------------------------------------------------";
 
+    // Constants for command prefix lengths
+    private static final int TODO_PREFIX_LENGTH = 5;  // Length of "todo"
+    private static final int DEADLINE_PREFIX_LENGTH = 9;  // Length of "deadline"
+    private static final int EVENT_PREFIX_LENGTH = 6;  // Length of "event"
+
     public static void main(String[] args) {
         printHelloMessage();
-
         Scanner sc = new Scanner(System.in);
         ArrayList<Task> tasks = new ArrayList<>();
         String option = sc.nextLine();
@@ -28,13 +32,13 @@ public class Robonaut {
                 int index = extractInteger(option);
                 executeUnmarkCommand(tasks, index - 1);
             } else if (option.startsWith("todo")) {
-                String desc = option.substring(5); // skip "todo"
+                String desc = option.substring(TODO_PREFIX_LENGTH); // skip "todo"
                 printAddCommand(tasks, new ToDo(desc));
             } else if (option.startsWith("deadline")) {
-                String[] parts = option.substring(9).split("/by", 2);
+                String[] parts = option.substring(DEADLINE_PREFIX_LENGTH).split("/by", 2);
                 printAddCommand(tasks, new Deadline(parts[0].trim(), parts[1].trim()));
             } else if (option.startsWith("event")) {
-                String[] parts = option.substring(6).split("/from|/to");
+                String[] parts = option.substring(EVENT_PREFIX_LENGTH).split("/from|/to");
                 String desc = parts[0].trim();
                 String from = parts[1].trim();
                 String to = parts[2].trim();
@@ -80,11 +84,11 @@ public class Robonaut {
      */
     public static void printAddCommand(ArrayList<Task> tasks, Task task) {
         tasks.add(task);
-        System.out.println(HORIZONTAL_LINE);
+        printHorizontalLine();
         System.out.println("Got it. I've added this task:");
         System.out.println("  " + task);
         System.out.println("Now you have " + tasks.size() + " tasks in the list.");
-        System.out.println(HORIZONTAL_LINE);
+        printHorizontalLine();
     }
 
     /**
@@ -93,12 +97,12 @@ public class Robonaut {
      * @param tasks the task list
      */
     public static void printListCommand(ArrayList<Task> tasks) {
-        System.out.println(HORIZONTAL_LINE);
+        printHorizontalLine();
         System.out.println("Here are the tasks in your list:");
         for (int i = 0; i < tasks.size(); i++) {
             System.out.println((i + 1) + ". " + tasks.get(i));
         }
-        System.out.println(HORIZONTAL_LINE);
+        printHorizontalLine();
     }
 
     /**
@@ -110,10 +114,10 @@ public class Robonaut {
     public static void executeMarkCommand(ArrayList<Task> tasks, int index) {
         Task t = tasks.get(index);
         t.markAsDone();
-        System.out.println(HORIZONTAL_LINE);
+        printHorizontalLine();
         System.out.println("Nice! I've marked this task as done:");
         System.out.println("  " + t);
-        System.out.println(HORIZONTAL_LINE);
+        printHorizontalLine();
     }
 
     /**
@@ -125,10 +129,10 @@ public class Robonaut {
     public static void executeUnmarkCommand(ArrayList<Task> tasks, int index) {
         Task t = tasks.get(index);
         t.markAsNotDone();
-        System.out.println(HORIZONTAL_LINE);
+        printHorizontalLine();
         System.out.println("OK, I've marked this task as not done yet:");
         System.out.println("  " + t);
-        System.out.println(HORIZONTAL_LINE);
+        printHorizontalLine();
     }
 
     /**
@@ -144,5 +148,12 @@ public class Robonaut {
             return 0;
         }
         return Integer.parseInt(parts[parts.length - 1]);
+    }
+
+    /**
+     * Prints a Horizontal Line
+     */
+    private static void printHorizontalLine() {
+        System.out.println(HORIZONTAL_LINE);
     }
 }
