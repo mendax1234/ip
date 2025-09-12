@@ -1,4 +1,4 @@
-package tasks;
+package robonaut.tasks;
 
 public abstract class Task {
     /** Description of the task */

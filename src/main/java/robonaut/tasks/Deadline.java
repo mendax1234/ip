@@ -1,4 +1,4 @@
-package tasks;
+package robonaut.tasks;
 
 public class Deadline extends Task {
     /** The deadline time as a string. */

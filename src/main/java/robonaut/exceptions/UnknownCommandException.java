@@ -1,4 +1,4 @@
-package exceptions;
+package robonaut.exceptions;
 
 public class UnknownCommandException extends RobonautException {
     public UnknownCommandException(String command) {

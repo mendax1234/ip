@@ -1,16 +1,18 @@
+package robonaut;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import exceptions.RobonautException;
-import exceptions.EmptyDescriptionException;
-import exceptions.InvalidTaskNumberException;
-import exceptions.UnknownCommandException;
-import exceptions.InvalidFormatException;
+import robonaut.exceptions.RobonautException;
+import robonaut.exceptions.EmptyDescriptionException;
+import robonaut.exceptions.InvalidTaskNumberException;
+import robonaut.exceptions.UnknownCommandException;
+import robonaut.exceptions.InvalidFormatException;
 
-import tasks.Deadline;
-import tasks.Event;
-import tasks.Task;
-import tasks.ToDo;
+import robonaut.tasks.Deadline;
+import robonaut.tasks.Event;
+import robonaut.tasks.Task;
+import robonaut.tasks.ToDo;
 
 public class Robonaut {
     /**
