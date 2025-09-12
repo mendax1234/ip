@@ -8,7 +8,7 @@ Hey bro! Good to see you here! I'm Robonaut, your most intelligent helper!
 What can I do for you?
 ------------------------------------------------------------
 Got it. I've added this task:
-  [T][ ] buy groceries
+  [T][ ] Buy groceries
 Now you have 1 tasks in the list.
 ------------------------------------------------------------
 ------------------------------------------------------------
@@ -23,21 +23,21 @@ Now you have 3 tasks in the list.
 ------------------------------------------------------------
 ------------------------------------------------------------
 Here are the tasks in your list:
-1. [T][ ] buy groceries
+1. [T][ ] Buy groceries
 2. [D][ ] Submit report (by: 2025-09-15)
 3. [E][ ] Team meeting (from: 2025-09-20 10:00 to: 2025-09-20 11:00)
 ------------------------------------------------------------
 ------------------------------------------------------------
 Nice! I've marked this task as done:
-  [T][X] buy groceries
+  [T][X] Buy groceries
 ------------------------------------------------------------
 ------------------------------------------------------------
 OK, I've marked this task as not done yet:
-  [T][ ] buy groceries
+  [T][ ] Buy groceries
 ------------------------------------------------------------
 ------------------------------------------------------------
 Here are the tasks in your list:
-1. [T][ ] buy groceries
+1. [T][ ] Buy groceries
 2. [D][ ] Submit report (by: 2025-09-15)
 3. [E][ ] Team meeting (from: 2025-09-20 10:00 to: 2025-09-20 11:00)
 ------------------------------------------------------------
