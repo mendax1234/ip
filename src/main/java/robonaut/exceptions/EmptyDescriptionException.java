@@ -1,4 +1,4 @@
-package exceptions;
+package robonaut.exceptions;
 
 public class EmptyDescriptionException extends RobonautException {
     public EmptyDescriptionException(String taskType) {
