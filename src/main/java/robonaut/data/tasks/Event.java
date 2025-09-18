@@ -26,6 +26,11 @@ public class Event extends Task {
     }
 
     @Override
+    public String serialize() {
+        return super.serialize() + " | " + from + " | " + to;
+    }
+
+    @Override
     public String toString() {
         return "[" + getTypeTag() + "]" + getStatusIcon()
                 + " " + description + " (from: " + from + " to: " + to + ")";

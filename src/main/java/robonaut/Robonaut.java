@@ -5,6 +5,7 @@ import robonaut.commands.CommandResult;
 import robonaut.commands.ExitCommand;
 import robonaut.data.TaskList;
 import robonaut.parser.Parser;
+import robonaut.storage.Storage;
 import robonaut.ui.Ui;
 
 /**
@@ -14,7 +15,8 @@ import robonaut.ui.Ui;
 public class Robonaut {
 
     private Ui ui;
-    private TaskList taskList = new TaskList();
+    private TaskList taskList;
+    private Storage storage = new Storage("./data/robonaut.txt");
 
     public static void main(String[] args) {
         new Robonaut().run();
@@ -32,6 +34,7 @@ public class Robonaut {
      */
     private void start() {
         this.ui = new Ui();
+        this.taskList = storage.load(); // load tasks at startup
         ui.showWelcome();
     }
 
@@ -49,6 +52,7 @@ public class Robonaut {
             command = new Parser().parseCommand(userCommandText);
             CommandResult result = executeCommand(command);
             ui.showResultToUser(result);
+            storage.save(taskList);
         } while (!ExitCommand.isExit(command));
     }
 
