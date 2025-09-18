@@ -1,4 +1,4 @@
-package robonaut.tasks;
+package robonaut.data.tasks;
 
 public abstract class Task {
     /** Description of the task */

@@ -1,4 +1,4 @@
-package robonaut.tasks;
+package robonaut.data.tasks;
 
 public class ToDo extends Task {
     /**

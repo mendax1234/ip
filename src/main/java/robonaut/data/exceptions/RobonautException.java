@@ -1,4 +1,4 @@
-package robonaut.exceptions;
+package robonaut.data.exceptions;
 
 public class RobonautException extends Exception {
     public RobonautException(String message) {

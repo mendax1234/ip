@@ -1,4 +1,4 @@
-package robonaut.tasks;
+package robonaut.data.tasks;
 
 public class Event extends Task {
     /** Start time of the event. */

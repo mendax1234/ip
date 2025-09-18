@@ -1,4 +1,4 @@
-package robonaut.exceptions;
+package robonaut.data.exceptions;
 
 public class InvalidTaskNumberException extends RobonautException {
     public InvalidTaskNumberException(String message) {
