@@ -23,6 +23,8 @@ public class Parser {
                 return new AddCommand(input);
             } else if (lowerInput.startsWith("event ")) {
                 return new AddCommand(input);
+            } else if (lowerInput.startsWith("delete")) {
+                return new DeleteCommand(input);
             } else if (lowerInput.equals("bye")) {
                 return new ExitCommand();
             } else {
