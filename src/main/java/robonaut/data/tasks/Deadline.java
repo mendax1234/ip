@@ -21,6 +21,11 @@ public class Deadline extends Task {
     }
 
     @Override
+    public String serialize() {
+        return super.serialize() + " | " + by;
+    }
+
+    @Override
     public String toString() {
         return "[" + getTypeTag() + "]" + getStatusIcon()
                 + " " + description + " (by: " + by + ")";

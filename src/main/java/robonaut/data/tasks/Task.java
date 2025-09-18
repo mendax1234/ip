@@ -40,6 +40,10 @@ public abstract class Task {
         return (isDone ? "[X]" : "[ ]");
     }
 
+    public String serialize() {
+        return getTypeTag() + " | " + (isDone ? 1 : 0) + " | " + description;
+    }
+
     /**
      * Returns the type tag of the task (T, D, or E).
      *
