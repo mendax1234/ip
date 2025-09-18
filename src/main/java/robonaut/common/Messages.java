@@ -1,4 +1,4 @@
-package common;
+package robonaut.common;
 
 /**
  * Container for user visible messages.

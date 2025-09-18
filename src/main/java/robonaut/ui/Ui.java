@@ -1,6 +1,6 @@
 package robonaut.ui;
 
-import static common.Messages.MESSAGE_LOGO;
+import static robonaut.common.Messages.MESSAGE_LOGO;
 
 import java.util.Scanner;
 import robonaut.commands.CommandResult;
