@@ -31,6 +31,7 @@ public class FindCommand extends Command {
     public CommandResult execute() {
         String keyword = fullCommand.substring(5).trim();
 
+        // Uses Java Stream, the functional paradigm here
         List<Task> matching = data.getTasks().stream()
                 .filter(task -> task.getDescription().toLowerCase().contains(keyword.toLowerCase()))
                 .toList();
