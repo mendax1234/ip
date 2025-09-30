@@ -4,6 +4,9 @@ import robonaut.data.tasks.Task;
 
 import java.util.List;
 
+/**
+ * Finds tasks that match a keyword in their description.
+ */
 public class FindCommand extends Command {
     private final String fullCommand;
 
