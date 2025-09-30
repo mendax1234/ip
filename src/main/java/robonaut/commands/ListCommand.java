@@ -1,6 +1,15 @@
 package robonaut.commands;
 
+/**
+ * Represents a command to list all tasks in the task list.
+ * Returns a formatted string of all tasks or a message indicating the list is empty.
+ */
 public class ListCommand extends Command {
+    /**
+     * Executes the list command by retrieving all tasks from the task list and formatting them.
+     *
+     * @return A CommandResult containing either a formatted string of all tasks or a message indicating the task list is empty.
+     */
     @Override
     public CommandResult execute() {
         if (data.isEmpty()) {

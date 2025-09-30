@@ -2,7 +2,19 @@ package robonaut.parser;
 
 import robonaut.commands.*;
 
+/**
+ * Parses user input to create appropriate command objects for the Robonaut application.
+ * Converts input strings into specific command instances based on predefined command keywords.
+ */
 public class Parser {
+    /**
+     * Parses the input string to create a corresponding Command object.
+     * Recognizes commands such as list, mark, unmark, todo, deadline, event, delete, find, and bye.
+     * Returns an IncorrectCommand for invalid or unrecognized input.
+     *
+     * @param input The user input string to parse.
+     * @return A Command object corresponding to the input, or an IncorrectCommand if the input is invalid or unrecognized.
+     */
     public Command parseCommand(String input) {
         try {
             if (input.isEmpty()) {

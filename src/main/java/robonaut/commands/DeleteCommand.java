@@ -3,13 +3,28 @@ package robonaut.commands;
 import robonaut.data.exceptions.InvalidTaskNumberException;
 import robonaut.data.tasks.Task;
 
+/**
+ * Represents a command to delete a task from the task list based on the provided task number.
+ */
 public class DeleteCommand extends Command {
+    /** The full command string containing the delete instruction and task number. */
     private String fullCommand;
 
+    /**
+     * Constructs a DeleteCommand with the specified command string.
+     *
+     * @param fullCommand The full command string, expected to include the task number to delete.
+     */
     public DeleteCommand(String fullCommand) {
         this.fullCommand = fullCommand;
     }
 
+    /**
+     * Executes the delete command by removing the specified task from the task list.
+     *
+     * @return A CommandResult containing the success message, the deleted task, and the updated task list size,
+     *         or an error message if the task number is invalid.
+     */
     @Override
     public CommandResult execute() {
         try {
@@ -22,7 +37,13 @@ public class DeleteCommand extends Command {
         }
     }
 
-
+    /**
+     * Extracts the task index from the command string.
+     * The index is derived from the task number provided in the command, adjusted to zero-based indexing.
+     *
+     * @return The zero-based index of the task to delete.
+     * @throws InvalidTaskNumberException If the task number is missing, invalid, or out of range.
+     */
     private int extractTaskIndex() throws InvalidTaskNumberException {
         String[] parts = fullCommand.split("\\s+");
 

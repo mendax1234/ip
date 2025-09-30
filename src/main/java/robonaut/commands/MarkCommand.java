@@ -2,13 +2,27 @@ package robonaut.commands;
 
 import robonaut.data.exceptions.InvalidTaskNumberException;
 
+/**
+ * Represents a command to mark a task as done in the task list based on the provided task number.
+ */
 public class MarkCommand extends Command {
+    /** The full command string containing the mark instruction and task number. */
     private String fullCommand;
 
+    /**
+     * Constructs a MarkCommand with the specified command string.
+     *
+     * @param fullCommand The full command string, expected to include the task number to mark as done.
+     */
     public MarkCommand(String fullCommand) {
         this.fullCommand = fullCommand;
     }
 
+    /**
+     * Executes the mark command by marking the specified task as done in the task list.
+     *
+     * @return A CommandResult containing a success message and the marked task, or an error message if the task number is invalid.
+     */
     @Override
     public CommandResult execute() {
         try {
@@ -21,7 +35,13 @@ public class MarkCommand extends Command {
         }
     }
 
-
+    /**
+     * Extracts the task index from the command string.
+     * The index is derived from the task number provided in the command, adjusted to zero-based indexing.
+     *
+     * @return The zero-based index of the task to mark.
+     * @throws InvalidTaskNumberException If the task number is missing, invalid, or out of range.
+     */
     private int extractTaskIndex() throws InvalidTaskNumberException {
         String[] parts = fullCommand.split("\\s+");
 

@@ -1,10 +1,15 @@
 package robonaut.data.tasks;
 
+/**
+ * An abstract base class for tasks in the Robonaut application.
+ * Represents a task with a description and a completion status, serving as the parent class for specific task types
+ * such as ToDo, Deadline, and Event.
+ */
 public abstract class Task {
     /** Description of the task */
     protected String description;
 
-    /** Whether the task is marked as done. */
+    /** Indicates whether the task is marked as done. */
     protected boolean isDone;
 
     /**

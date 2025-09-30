@@ -1,21 +1,37 @@
 package robonaut.commands;
 
+import static robonaut.common.Messages.DEADLINE_PREFIX_LENGTH;
+import static robonaut.common.Messages.EVENT_PREFIX_LENGTH;
+import static robonaut.common.Messages.TODO_PREFIX_LENGTH;
+
 import robonaut.data.exceptions.EmptyDescriptionException;
 import robonaut.data.exceptions.InvalidFormatException;
 import robonaut.data.exceptions.RobonautException;
 import robonaut.data.tasks.*;
 
+/**
+ * Represents a command to add a task (ToDo, Deadline, or Event) to the task list.
+ * The command parses the input string to determine the type of task and its details.
+ */
 public class AddCommand extends Command {
-    private static final int TODO_PREFIX_LENGTH = 4;
-    private static final int DEADLINE_PREFIX_LENGTH = 8;
-    private static final int EVENT_PREFIX_LENGTH = 5;
-
+    /** The full command string containing the add instruction and description of the task to add. */
     private String fullCommand;
 
+    /**
+     * Constructs an AddCommand with the specified command string.
+     *
+     * @param fullCommand The full command string containing the task type and details.
+     */
     public AddCommand(String fullCommand) {
         this.fullCommand = fullCommand;
     }
 
+    /**
+     * Executes the add command by determining the task type (todo, deadline, or event)
+     * and adding the corresponding task to the task list.
+     *
+     * @return A CommandResult containing the result message, the added task (if any), and the task list size.
+     */
     @Override
     public CommandResult execute() {
         try {
@@ -35,6 +51,12 @@ public class AddCommand extends Command {
         }
     }
 
+    /**
+     * Adds a ToDo task based on the command string.
+     *
+     * @return A CommandResult with the success message, the added task, and the task list size.
+     * @throws EmptyDescriptionException If the task description is empty.
+     */
     private CommandResult addTodo() throws EmptyDescriptionException {
         if (fullCommand.length() <= TODO_PREFIX_LENGTH) {
             throw new EmptyDescriptionException("todo");
@@ -50,6 +72,12 @@ public class AddCommand extends Command {
         return new CommandResult("Got it. I've added this task:", task, data.size());
     }
 
+    /**
+     * Adds a Deadline task based on the command string, including a description and due date.
+     *
+     * @return A CommandResult with the success message, the added task, and the task list size.
+     * @throws RobonautException If the description is empty or the format is invalid.
+     */
     private CommandResult addDeadline() throws RobonautException {
         if (fullCommand.length() <= DEADLINE_PREFIX_LENGTH) {
             throw new EmptyDescriptionException("deadline");
@@ -80,6 +108,12 @@ public class AddCommand extends Command {
         return new CommandResult("Got it. I've added this task:", task, data.size());
     }
 
+    /**
+     * Adds an Event task based on the command string, including a description, start time, and end time.
+     *
+     * @return A CommandResult with the success message, the added task, and the task list size.
+     * @throws RobonautException If the description is empty or the format is invalid.
+     */
     private CommandResult addEvent() throws RobonautException {
         if (fullCommand.length() <= EVENT_PREFIX_LENGTH) {
             throw new EmptyDescriptionException("event");

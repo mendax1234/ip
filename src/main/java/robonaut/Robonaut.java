@@ -13,16 +13,26 @@ import robonaut.ui.Ui;
  * Initializes the application and starts the interaction with the user.
  */
 public class Robonaut {
-
+    /** The user interface for displaying messages and reading input. */
     private Ui ui;
+    /** The task list containing all tasks managed by the application. */
     private TaskList taskList;
+    /** The storage handler for loading and saving tasks to a file. */
     private Storage storage = new Storage("./data/robonaut.txt");
 
+    /**
+     * The main method to start the Robonaut application.
+     *
+     * @param args Command-line arguments (not used).
+     */
     public static void main(String[] args) {
         new Robonaut().run();
     }
 
-    /** Runs the program until termination. */
+    /**
+     * Runs the Robonaut application until the user issues an exit command.
+     * Initializes the application, processes user commands, and terminates gracefully.
+     */
     public void run() {
         start();
         runCommandLoopUntilExitCommand();
@@ -38,13 +48,18 @@ public class Robonaut {
         ui.showWelcome();
     }
 
-    /** Prints the goodbye message and exits. */
+    /**
+     * Displays the goodbye message and closes the user interface.
+     */
     private void exit() {
         ui.showBye();
         ui.close();
     }
 
-    /** Reads the user command and executes it, until the user issues the exit command. */
+    /**
+     * Runs a loop that reads, parses, and executes user commands until an exit command is received.
+     * Saves the task list to storage after each command execution.
+     */
     private void runCommandLoopUntilExitCommand() {
         Command command;
         do {
@@ -57,10 +72,11 @@ public class Robonaut {
     }
 
     /**
-     * Executes the command and returns the result.
+     * Executes the specified command and returns its result.
+     * Sets the task list for the command and handles any exceptions during execution.
      *
-     * @param command user command
-     * @return result of the command
+     * @param command The command to execute.
+     * @return A CommandResult containing the outcome of the command execution, or an error message if an exception occurs.
      */
     private CommandResult executeCommand(Command command) {
         try {
