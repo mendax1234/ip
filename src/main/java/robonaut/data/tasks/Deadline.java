@@ -45,7 +45,7 @@ public class Deadline extends Task {
      */
     @Override
     public String serialize() {
-        // Store in yyyy-MM-dd format (machine-readable)
+        // Store in yyyy-MM-dd format
         return super.serialize() + " | " + by.toString();
     }
 
