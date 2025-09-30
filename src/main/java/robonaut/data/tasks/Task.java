@@ -40,6 +40,10 @@ public abstract class Task {
         return (isDone ? "[X]" : "[ ]");
     }
 
+    public String getDescription() {
+        return description;
+    }
+
     public String serialize() {
         return getTypeTag() + " | " + (isDone ? 1 : 0) + " | " + description;
     }
