@@ -223,14 +223,14 @@ Robonaut data is stored in a text file at `./data/robonaut.txt`. Advanced users 
 
 ## Command Summary
 
-| Action           | Format, Examples                                                                                    |
-|------------------|-----------------------------------------------------------------------------------------------------|
-| **List**         | `list`                                                                                              |
-| **Add ToDo**     | `todo DESCRIPTION` <br> e.g., `todo Buy groceries`                                                  |
-| **Add Deadline** | `deadline DESCRIPTION /by DATE` <br> e.g., `deadline Submit report /by 2025-12-31`                  |
-| **Add Event**    | `event DESCRIPTION /from START_TIME /to END_TIME` <br> e.g., `event Team meeting /from 2pm /to 4pm` |
-| **Mark**         | `mark INDEX` <br> e.g., `mark 1`                                                                    |
-| **Unmark**       | `unmark INDEX` <br> e.g., `unmark 1`                                                                |
-| **Delete**       | `delete INDEX` <br> e.g., `delete 1`                                                                |
-| **Find**         | `find KEYWORD` <br> e.g., `find report`                                                             |
-| **Exit**         | `bye`                                                                                               |
+| Action           | Format                                            | Example                                 |
+| ---------------- | ------------------------------------------------- | --------------------------------------- |
+| **List**         | `list`                                            | —                                       |
+| **Add ToDo**     | `todo DESCRIPTION`                                | `todo Buy groceries`                    |
+| **Add Deadline** | `deadline DESCRIPTION /by DATE`                   | `deadline Submit report /by 2025-12-31` |
+| **Add Event**    | `event DESCRIPTION /from START_TIME /to END_TIME` | `event Team meeting /from 2pm /to 4pm`  |
+| **Mark**         | `mark INDEX`                                      | `mark 1`                                |
+| **Unmark**       | `unmark INDEX`                                    | `unmark 1`                              |
+| **Delete**       | `delete INDEX`                                    | `delete 1`                              |
+| **Find**         | `find KEYWORD`                                    | `find report`                           |
+| **Exit**         | `bye`                                             | —                                       |
