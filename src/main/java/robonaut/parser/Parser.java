@@ -25,19 +25,19 @@ public class Parser {
 
             if (lowerInput.equals("list")) {
                 return new ListCommand();
-            } else if (lowerInput.startsWith("mark ")) {
+            } else if (lowerInput.startsWith("mark")) {
                 return new MarkCommand(input);
-            } else if (lowerInput.startsWith("unmark ")) {
+            } else if (lowerInput.startsWith("unmark")) {
                 return new UnmarkCommand(input);
-            } else if (lowerInput.startsWith("todo ")) {
+            } else if (lowerInput.startsWith("todo")) {
                 return new AddCommand(input);
-            } else if (lowerInput.startsWith("deadline ")) {
+            } else if (lowerInput.startsWith("deadline")) {
                 return new AddCommand(input);
-            } else if (lowerInput.startsWith("event ")) {
+            } else if (lowerInput.startsWith("event")) {
                 return new AddCommand(input);
             } else if (lowerInput.startsWith("delete")) {
                 return new DeleteCommand(input);
-            } else if (lowerInput.startsWith("find ")) {
+            } else if (lowerInput.startsWith("find")) {
                 return new FindCommand(input);
             } else if (lowerInput.equals("bye")) {
                 return new ExitCommand();
